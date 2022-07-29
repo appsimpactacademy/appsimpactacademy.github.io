@@ -3,17 +3,29 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>APPSIMPACT Academy</title>
+    <title>Difference between Instance and Local Variables in Ruby | APPSIMPACT Academy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+    <script src="javascript/prism.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3650636944012577"
      crossorigin="anonymous"></script>
+    <meta name="description" content="Instance and local variables are two frequently used variable types in both Ruby and Rails. Knowing difference in both can reduce the bugs and improve you coding practices.">
+    <meta name="keywords" content="Local Variables in Ruby, Instance variables in Ruby, Local vs Instance variables in Ruby, difference between local and instance variables in Ruby">
+    <meta property="og:description" content="Instance and local variables are two frequently used variable types in both Ruby and Rails. Knowing difference in both can reduce the bugs and improve you coding practices.">
+    <meta property="og:url" content="https://appsimpactacademy.github.io/">
+    <meta property="og:type" content="article"/>
+    <meta property="og:site_name" content="APPSIMPACT Academy"/>
+    <meta name="twitter:title" content="Difference between Instance and Local Variables in Ruby"/>
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="appsimpactacademy.github.io">
+    <meta name="twitter:description" content="Instance and local variables are two frequently used variable types in both Ruby and Rails. Knowing difference in both can reduce the bugs and improve you coding practices.">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">APPSIMPACT Academy</a>
+        <a class="navbar-brand" href="https://appsimpactacademy.github.io/">APPSIMPACT Academy</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,63 +53,40 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-          <h1 class="text-center mb-5 mt-5">Best place for learning Ruby on Rails</h1>
+        <div class="col-lg-9 mx-auto mt-5 mb-5">
+          <h2 class="text-center mb-2">What is the difference between instance variables and local variables?</h2>
 
-          <div class="row">
-            <div class="col-12">
-              <h1 class="text-center mb-5">We Provide</h1>
-            </div>
-            <div class="col-md-4">
-              <a href="https://www.youtube.com/c/APPSIMPACTAcademy" class="non-decoration-link" target="_blank">
-                <div class="card shadow">
-                  <div class="card-body text-center">
-                    <h3>Free Video Lectures</h3>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-md-4">
-              <div class="card shadow">
-                <div class="card-body text-center">
-                  <h3>Blogs on Hot ROR Topics</h3>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <a href="ror-faq.html" class="non-decoration-link">
-                <div class="card shadow">
-                  <div class="card-body text-center">
-                    <h3>ROR Interview Question</h3>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-lg-9 mt-0 mb-5">
-          <div class="card mt-5">
-            <div class="card-body">
-              <p class="lead">
-                <strong>Email:</strong>
-                <a href="mailto:training.appsimpact@gmail.com">training.appsimpact@gmail.com</a> 
-              </p>
-              <p class="lead">
-                <strong>Website:</strong>
-                <a href="https://appsimpactacademy.github.io/">https://appsimpactacademy.github.io/</a>
-              </p>
-              <p class="lead">
-                <strong>Youtube Channel:</strong>
-                <a href="https://www.youtube.com/c/APPSIMPACTAcademy">APPSIMPACT Academy</a>
-              </p>
-            </div>
-          </div>
+          <p class="lead mt-3 mb-3">Instance variables and local variables both are frquently used in ruby and rails programming. Both have some difference between them and not only in ways of defining them but also in their usage and scopes as well.</p>
+          <table class="table table-bordered mt-5">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Instance Variables</th>
+                <th>Local Variables</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>An instance variable always starts with an <code>@</code> symbol. For example: <code>@array = Array.new()</code> or <code>@array = []</code>. Both represents an instance variable.</td>
+                <td>A local variable always starts with a lowercase character. Defining a local variable name is same as defining a method in Ruby. For example <code>array = Array.new()</code></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>An instance variable is accessible by all the methdos defined by it's class hence it's scope is entire class.</td>
+                <td>A local variable has limited scope than an instance variable. It can be accessible only within the block(methods, iterators, loops) it is defined.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Accessing an undefined or uninitialized instance variable never return any error. Instead of error it always return nil.</td>
+                <td>Accessing an undefined local variable always returns an error. So when using local variables you need make sure that it is defined.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-
+    
     <nav class="navbar navbar-expand-sm navbar-dark bg-secondary mt-5">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">APPSIMPACT Academy</a>
