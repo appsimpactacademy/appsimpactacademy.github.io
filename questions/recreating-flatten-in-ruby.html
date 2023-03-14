@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3650636944012577"
+     crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to recreate flatten method in Ruby using recursion?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet">
+    <script src="../javascript/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <meta name="description" content="The flatten method returns a new Array that is a recursive flattening of the given array. Where each non-Array element is unchanged and each Array element is replaced by its individual elements.">
+    <meta name="keywords" content="flatten method in ruby, ruby flatten, implementing flatten method in ruby, recursive flatten method in ruby, implement recursive flatten method, ruby flatten method from scratch, writing own flatten method, ruby flatten method, custom flatten method in ruby">
+    <meta property="og:description" content="The flatten method returns a new Array that is a recursive flattening of the given array. Where each non-Array element is unchanged and each Array element is replaced by its individual elements.">
+    <meta property="og:url" content="https://appsimpactacademy.github.io/">
+    <meta property="og:type" content="article"/>
+    <meta property="og:site_name" content="APPSIMPACT Academy"/>
+    <meta name="twitter:title" content="How to recreate flatten method in Ruby using recursion?"/>
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="appsimpactacademy.github.io">
+    <meta name="twitter:description" content="The flatten method returns a new Array that is a recursive flattening of the given array. Where each non-Array element is unchanged and each Array element is replaced by its individual elements.">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://appsimpactacademy.github.io/">APPSIMPACT Academy</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="../rubyonrails-course.html">Rails Bootcamp Course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="../ror-faq.html">ROR Interview Questions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Question & Answers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="../contactus.html">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 mx-auto mt-5 mb-5">
+          <h2 class="text-center mb-2">How to recreate flatten method in Ruby using recursion?</h2>
+
+          <p class="lead mt-3 mb-3">In recent days I got chance to interview few candidates for the position of Ruby on Rails developer for a client. In the interview I asked few coding questions that I am willing to share with you guys. These are very basic questions but from the interview perspective very important as well.</p>
+
+          <p class="lead mt-3 mb-3">We all know that ruby provided number of inbuilt methods for array to write our code in fast and simple manner. For example to get the minimum and maximum element from the ruby array you can simply use min and max methods rather then implementing these methods from scratch. And these are just examples, there are many such methods.</p>
+
+          <p class="lead mt-3 mb-3">And one of such method is <strong>flatten</strong>.</p>
+
+          <p class="lead mt-3 mb-3">The flatten method returns a new Array that is a recursive flattening of self. Where:</p>
+
+          <ul>
+            <li>Each non-Array element is unchanged.</li>
+            <li>Each Array element is replaced by its individual elements.</li>
+          </ul>
+
+          <p class="lead mt-3 mb-3">So the question I asked, was <strong>how to recreate the flatten method?</strong></p>
+          <p class="lead mt-3 mb-3">Now to solve this problem, let's think in algorithmic way:</p>
+
+          <ol>
+            <li>We need an array that we need to flatten</li>
+            <li>We need an empty array where we will store the output</li>
+            <li>We need to write a method that will accept the given array as argument</li>
+            <li>Call the implemented method to get the flattened array</li>
+          </ol>
+
+          <p class="lead mt-3 mb-3">Now let's start step by step:</p>
+
+          <p class="lead mt-3 mb-3"><strong>Step 1: Define an array(that should not flattened already)</strong></p>
+          <pre class="language-ruby">
+            <code>
+              array = [1, 2, [3, 4, 5], [6, 7, [8, 9]], 10]
+            </code>
+          </pre>
+          <p class="lead mt-3 mb-3"><strong>Step 2: Define the output variable(must be an empty array)</strong>s</p>
+          <pre class="language-ruby">
+            <code>
+              results = []
+            </code>
+          </pre>
+          <p class="lead mt-3 mb-3">However if you wish you can skip this step as well, as you can directly assign the method call output to results(see the step 4).</p>
+
+          <p class="lead mt-3 mb-3"><strong>Stpe 3: Implement the method to flatten the array(the procedure)</strong></p>
+          <pre class="language-ruby">
+            <code>
+              def flattened_array(array, results = [])
+                array.each do |element|
+                  if element.is_a?(Array)
+                    # here we need to make recursive call to the flattened_array 
+                    # by checking if the current element is also an array
+                    flattened_array(element, results)
+                  else
+                    results << element
+                  end
+                end
+                results
+              end
+            </code>
+          </pre>
+
+          <p class="lead mt-3 mb-3"><strong>Step 4: Returning the output(procedure execution)</strong></p>
+          <pre class="language-ruby">
+            <code>
+              results = flattened_array(array)
+
+              print results
+              => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            </code>
+          </pre>
+
+          <p class="lead mt-3 mb-3">If you wish you can verify the output by executing</p>
+          <pre class="language-ruby">
+            <code>
+              array = [1, 2, [3, 4, 5], [6, 7, [8, 9]], 10]
+              
+              array.flatten
+              => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            </code>
+          </pre>
+
+          <p class="lead mt-3 mb-3">And that's it. The recreation of flatten method is done.</p>
+
+          <p class="lead mt-3 mb-3">You can see that this is a very basic and simple to solve problem but these problems covers multiple aspects of your skills like your algorithmic approach, thought process towards solving a problem, knowledge of programming elements like iterators, recursion, logic building and so on.</p>
+          <p class="lead mt-3 mb-3">Try this at your end and wait for the next question.</p>
+          <p class="lead mt-3 mb-3">Till then TATA, Good Bye.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bg-primary text-white px-4 py-5 text-center mt-5">
+      <div class="py-5">
+        <h1 class="display-5 fw-bold text-white">APPSIMPACT Academy</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="fs-5 mb-4">Ruby on Rails is a very popular and most productive web application development framework. At APPSIMPACT Academy we provide best content to learn Ruby on Rails framework.</p>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="../rubyonrails-course.html" class="btn btn-outline-light btn-lg px-4">Rails Bootcamp Course</a>
+            <a href="../contactus.html" class="btn btn-outline-light btn-lg px-4">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Questions & Answers</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <a href="../questions/instance-vs-local-variables.html" target="_blank" class="nav-link">What is the difference between instance variables and local variables?</a>
+        <a href="../questions/initialize-method-in-ruby.html" target="_blank" class="nav-link">What is initialize() method in Ruby?</a>
+        <a href="../questions/getter-setter-methods-in-ruby.html" target="_blank" class="nav-link">What are getter and setter methods in Ruby?</a>
+        <a href="../questions/comparision-in-rails-versions.html" target="_blank" class="nav-link">Comparision between rails 4, 5 and 6</a>
+        <a href="../questions/difference-between-sub-and-gsub-in-ruby.html" target="_blank" class="nav-link">What is difference between sub and gsub in Ruby?</a>
+        <a href="../questions/recreating-flatten-in-ruby.html" target="_blank" class="nav-link">How to recreate flatten method in Ruby using recursion?</a>
+      </div>
+    </div>
+  </body>
+</html>
